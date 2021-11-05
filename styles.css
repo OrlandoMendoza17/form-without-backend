@@ -1,0 +1,101 @@
+:root {
+  --maxWidth: 700px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+label,
+.Carrera>span,
+.Gustos>span {
+  font-weight: 500;
+}
+
+.Carrera label>span,
+.Gustos label>span {
+  font-weight: 400;
+}
+
+.Gustos label {
+  display: block;
+}
+
+.main-section {
+  display: grid;
+  grid-template-columns: minmax(100px, var(--maxWidth));
+  justify-content: center;
+}
+
+#Formulario {
+  border-radius: 5px;
+  background-color: var(--bs-gray-200);
+  min-width: 200px;
+  max-width: var(--maxWidth);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.botones {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.button {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  background: linear-gradient(to left, #95ca3e 0%, #95ca3e 50%, #85c638 100%);
+  box-shadow: 0 3px 1px 0 #58902d;
+  color: #fff;
+  font-weight: 500;
+}
+.button.danger{
+  background: linear-gradient(to left, var(--bs-danger) 0%, var(--bs-danger) 50%, #d9293a 100%);
+  box-shadow: 0 3px 1px 0 rgb(116, 37, 45);
+}
+
+.button:active {
+  box-shadow: none;
+  transform: translateY(3px);
+}
+
+.age-input {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 5px;
+}
+
+.age-input>input {
+  width: 70px !important;
+}
+
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  grid-template-columns: minmax(100px, 500px);
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.modal-container {
+  border-radius: 5px;
+  background-color: var(--bs-gray-200);
+  max-width: var(--maxWidth);
+  display: flex;
+  flex-flow: column;
+}
