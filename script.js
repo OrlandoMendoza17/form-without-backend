@@ -22,18 +22,17 @@ $form.addEventListener("submit", async (event) => {
   const form = new FormData($form)
 
   if(form.get("edad") >= 0){
-    // const response = await fetch('https://formspree.io/f/mbjqvpgb', {
-    //   method: $form.method,
-    //   body: form,
-    //   headers: {
-    //     "Accept": "application/json"
-    //   }
-    // })
+    const response = await fetch('https://formspree.io/f/mbjqvpgb', {
+      method: $form.method,
+      body: form,
+      headers: {
+        "Accept": "application/json"
+      }
+    })
   
     $alertModal.classList.toggle("d-none")
   
-    if (true)
-    // if (response.ok)
+    if (response.ok)
       modalState("¡Gracias!", "El formulario ha sido enviado con éxito.", true)
     else
       modalState("¡Lo sentimos!", "Ha habido un problema con el envío del formulario.", false)
