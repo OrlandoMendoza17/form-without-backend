@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <style>
+    :root {
+      --maxWidth: 700px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    label,
+    .Carrera>span,
+    .Gustos>span {
+      font-weight: 500;
+    }
+
+    .Carrera label>span,
+    .Gustos label>span {
+      font-weight: 400;
+    }
+
+    .Gustos label {
+      display: block;
+    }
+
+    .main-section {
+      display: grid;
+      grid-template-columns: minmax(100px, var(--maxWidth));
+      justify-content: center;
+    }
+
+    #Formulario {
+      border-radius: 5px;
+      background-color: var(--bs-gray-200);
+      min-width: 200px;
+      max-width: var(--maxWidth);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .botones {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .button {
+      border: none;
+      border-radius: 5px;
+      padding: 5px;
+      background: linear-gradient(to left, #95ca3e 0%, #95ca3e 50%, #85c638 100%);
+      box-shadow: 0 3px 1px 0 #58902d;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .button:active {
+      box-shadow: none;
+      transform: translateY(3px);
+    }
+
+    .age-input {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .age-input>input {
+      width: 70px !important;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <section class="main-section px-2 py-5">
+      <form id="Formulario" class="p-3">
+
+        <label for="nombre">
+          <span>Nombre</span>
+          <input class="form-control" placeholder="Lionel Andrés" name="nombre" type="text" autocomplete="given-name"
+            required>
+        </label>
+
+        <label for="apellido">
+          <span>Apellido</span>
+          <input class="form-control" placeholder="Ronaldo dos Santos" name="apellido" id="apellido" type="text"
+            autocomplete="family-name" required>
+        </label>
+
+        <label for="correo">
+          <span>Correo</span>
+          <input class="form-control" placeholder="@unitec.com" name="correo" id="correo" type="email" autocomplete
+            required>
+        </label>
+
+        <label for="edad">
+          <span>Edad</span>
+          <div class="age-input">
+            <input class="form-control" placeholder="27" name="edad" id="edad" type="number" autocomplete required>
+            <span style="font-weight: 400;">años</span>
+          </div>
+        </label>
+
+        <div class="Carrera">
+          <span class="d-block mb-2">Carrera:</span>
+          <label for="ing">
+            <input type="radio" name="carrera" value="ingeniería" id="ing" required>
+            <span>Ingeniería</span>
+          </label>
+          <label for="lic">
+            <input type="radio" name="carrera" value="licenciatura" id="lic" required>
+            <span>Licenciatura</span>
+          </label>
+        </div>
+
+        <div class="Gustos">
+          <span class="d-block mb-2">Gustos:</span>
+          <label for="tec">
+            <input type="checkbox" name="gustos" value="Tecnología" id="tec">
+            <span>Tecnología</span>
+          </label>
+          <label for="science">
+            <input type="checkbox" name="gustos" value="Ciencias" id="science">
+            <span>Ciencias</span>
+          </label>
+          <label for="lit">
+            <input type="checkbox" name="gustos" value="Literatura" id="lit">
+            <span>Literatura</span>
+          </label>
+          <label for="vgames">
+            <input type="checkbox" name="gustos" value="Videojuegos" id="vgames">
+            <span>Videojuegos</span>
+          </label>
+        </div>
+
+        <div class="botones">
+          <button class="button" type="submit">Enviar</button>
+          <button class="button" type="reset">Resetear</button>
+        </div>
+
+      </form>
+      <a href="mailto:ommv.17@gmail.com?subject=orlando&body=mensaje" class="" id="trucazo">mail</a>
+    </section>
+  </main>
+
+  <script>
+    const myEmail = "ommv.17@gmail.com";
+    const mailto_URL = `mailto:${myEmail}`;
+    
+    const $form = document.getElementById("Formulario");
+    const $trucazo = document.getElementById("trucazo");
+    
+    $form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const form = new FormData($form)
+      
+      debugger
+      
+      const nombre = `Nombre: ${form.get("nombre")} ${form.get("apellido")}\n`
+      const correo = `Correo: ${form.get("correo")}\n`
+      const edad = `Edad: ${form.get("edad")}\n`
+      const carrera = `Carrera: ${form.get("carrera")}\n`
+      const gustos = `Gustos: ${form.get("gustos")}\n`
+      
+      const subject = `Envío de Formuario de ${nombre}`
+      const body = `${nombre}${edad}${correo}${carrera}${gustos}`
+      
+      $trucazo.setAttribute("href", `${mailto_URL}?subject=${subject}&body=${nombre}`)
+      
+      $trucazo.click();
+    })
+
+  </script>
+</body>
+
+</html>
